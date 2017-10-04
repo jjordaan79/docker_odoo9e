@@ -37,10 +37,11 @@ COPY ./entrypoint.sh /
 COPY ./openerp-server.conf /etc/odoo/
 RUN chown odoo /etc/odoo/openerp-server.conf
 
-# Mount /var/lib/odoo to allow restoring filestore and /mnt/extra-addons for users addons
-RUN mkdir -p /mnt/extra-addons \
-        && chown -R odoo /mnt/extra-addons
-VOLUME ["/var/lib/odoo", "/mnt/extra-addons"]
+# Mount /var/lib/odoo to allow restoring filestore and /opt/custom_modules /opt/enterprise /opt/odoo /opt/aeroo for users addons
+RUN mkdir -p /opt/odoo9e/custom_modules /opt/odoo9e/enterprise /opt/odoo9e/odoo /opt/odoo9e/aeroo \
+        && chown -R odoo /opt
+VOLUME ["/var/lib/odoo", "/opt/custom_modules", "/opt/enterprise", "/opt/odoo", "/opt/aeroo"]
+
 
 # Expose Odoo services
 EXPOSE 8069 8071
