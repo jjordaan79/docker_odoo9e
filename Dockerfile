@@ -1,5 +1,5 @@
 FROM debian:jessie
-Johan Jordaan <johan@datasmith.co.za>
+MAINTAINER Johan Jordaan <johan@datasmith.co.za>
 
 # Install some deps, lessc and less-plugin-clean-css, and wkhtmltopdf
 RUN set -x; \
